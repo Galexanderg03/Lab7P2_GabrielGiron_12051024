@@ -5,7 +5,9 @@
  */
 package lab7p2_gabrielgiron_12051024;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Level;
@@ -13,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -422,20 +425,39 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int seleccion = fileChooser.showOpenDialog(this);
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            File dir = fileChooser.getSelectedFile();
-            File[] files = dir.listFiles();
-            for (File file : files) {
-                if (file.isDirectory()) {
-                    JOptionPane.showMessageDialog(null, "Directorio:" + file.getName() + "\n");
+        File fichero = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            JFileChooser jfc = new JFileChooser("./");
+            FileNameExtensionFilter filtro = 
+                    new FileNameExtensionFilter(
+                            "Archivos de Texto", "txt");
+            FileNameExtensionFilter filtro2 = 
+                new FileNameExtensionFilter(
+                        "Imagenes", "jpg", "png", "bmp");
+            jfc.setFileFilter(filtro);
+            jfc.addChoosableFileFilter(filtro2);            
+            int seleccion = jfc.showOpenDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION)
+            {
+               fichero = jfc.getSelectedFile();
+               fr = new FileReader(fichero);
+               br=new BufferedReader(fr);
+               String linea;
+               String Salida = "";
+               while(  (linea=br.readLine()) !=null  ){                    
+                   Salida = Salida + linea + "\n"; 
                 }
-                if (file.isFile()) {
-                    JOptionPane.showMessageDialog(null, "Archivo:" + file.getName() + "\n");
-                }
+               JOptionPane.showMessageDialog(null, Salida);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            br.close();
+            fr.close();
+        } catch (IOException ex) {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
