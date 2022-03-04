@@ -16,6 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -525,7 +526,20 @@ public class Principal extends javax.swing.JFrame {
             AE.getListaEquipos().get(i).setPuntos(total);
             System.out.println(AE.getListaEquipos().get(i).getNombre() + " " +AE.getListaEquipos().get(i).getPuntos());
         }
-        
+        DefaultTableModel M = (DefaultTableModel) Posiciones.getModel();
+        M.setRowCount(0);
+        for (int i = 0; i < AE.getListaEquipos().size(); i++) {
+            String Name = AE.getListaEquipos().get(i).getNombre();
+            int Ganados = AE.getListaEquipos().get(i).getGanados();
+            int Perdidos = AE.getListaEquipos().get(i).getPerdidos();
+            int Empatados = AE.getListaEquipos().get(i).getEmpatados();
+            int GolesFavor = AE.getListaEquipos().get(i).getGolesFavor();
+            int GolesContra = AE.getListaEquipos().get(i).getGolesContra();
+            int Puntos = AE.getListaEquipos().get(i).getPuntos();
+            Object[] O = {Name, Ganados,Perdidos,Empatados,GolesFavor,GolesContra,Puntos};
+            M.addRow(O);
+        }
+        Posiciones.setModel(M);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
