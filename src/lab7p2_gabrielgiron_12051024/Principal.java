@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -422,6 +423,7 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         }
+        UpdateFrame();
     }//GEN-LAST:event_SimularPartidoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -512,7 +514,6 @@ public class Principal extends javax.swing.JFrame {
         Equipo1.setModel(R);
         Equipo2.setModel(M);
         Puntuacion();
-       
     }
     
     private void Puntuacion()
@@ -540,6 +541,7 @@ public class Principal extends javax.swing.JFrame {
             M.addRow(O);
         }
         Posiciones.setModel(M);
+        Posiciones.setAutoCreateRowSorter(true);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

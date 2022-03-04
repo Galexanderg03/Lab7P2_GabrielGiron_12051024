@@ -1,1 +1,1 @@
-Barcelona,0,0,0,0,0,Real Madrid,0,0,0,0,0,Motagua,0,0,0,0,0,Olimpia,0,0,0,0,0,
+Barcelona,1,1,0,10,11,Real Madrid,2,2,0,9,8,Atletico Madrid,0,1,0,2,2,
