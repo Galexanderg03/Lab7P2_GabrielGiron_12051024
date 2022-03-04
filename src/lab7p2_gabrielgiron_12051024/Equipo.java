@@ -79,7 +79,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + "Nombre=" + Nombre + ", Ganados=" + Ganados + ", Perdidos=" + Perdidos + ", Empatados=" + Empatados + ", GolesFavor=" + GolesFavor + ", GolesContra=" + GolesContra + '}';
+        return Nombre;
     }
     
 }
