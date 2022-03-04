@@ -510,8 +510,22 @@ public class Principal extends javax.swing.JFrame {
         }
         Equipo1.setModel(R);
         Equipo2.setModel(M);
-        
+        Puntuacion();
        
+    }
+    
+    private void Puntuacion()
+    {
+        AdministrarEquipos AE = new AdministrarEquipos("./Equipos.txt");
+        AE.cargarArchivo();
+        for (int i = 0; i < AE.getListaEquipos().size(); i++) {
+            int Ganados = AE.getListaEquipos().get(i).getGanados();
+            int Empatados = AE.getListaEquipos().get(i).getEmpatados();
+            int total = (Ganados * 3) + Empatados;
+            AE.getListaEquipos().get(i).setPuntos(total);
+            System.out.println(AE.getListaEquipos().get(i).getNombre() + " " +AE.getListaEquipos().get(i).getPuntos());
+        }
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
