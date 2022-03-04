@@ -16,6 +16,7 @@ public class Equipo {
     private int Empatados = 0;
     private int GolesFavor = 0;
     private int GolesContra = 0;
+    private int Puntos = 0;
 
     public Equipo(String Nombre) {
         this.Nombre = Nombre;
@@ -75,6 +76,14 @@ public class Equipo {
 
     public void setGolesContra(int GolesContra) {
         this.GolesContra = GolesContra;
+    }
+
+    public int getPuntos() {
+        return Puntos;
+    }
+
+    public void setPuntos(int Puntos) {
+        this.Puntos = Puntos;
     }
 
     @Override
